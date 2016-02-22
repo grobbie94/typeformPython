@@ -1,4 +1,4 @@
-
+from datetime import datetime
 class form:
     def __init__(self, json):
         self.json = json
@@ -10,8 +10,19 @@ class form:
             questionDict[question['id']] = question['question']
         return questionDict
 
-    def getCompletedAnswers(self):
-        pass
+    def getAllCompletedAnswers(self):
+        return getCompletedAnswersBefore(datetime.now())
+
+    #untilTime must be a dateTime Object
+
+    def getCompletedAnswersBefore(self, untilTime):
+        answerDict = {}
+        responses = self.json['responses']
+        for response in responses:
+            responseTime = datetime.strptime(response['date_submit'], "%Y-%m-%d %H:%M:%S")
+            if response['completed'] == "1" and responseTime < untilTime:
+                answerDict[response['token']] = responses['answers'].values()
+        return answerDict
 
     def getAverageRating(self, questionNumber):
         pass
