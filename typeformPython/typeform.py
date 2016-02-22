@@ -12,6 +12,7 @@ class typeform:
         self.API_KEY = API_KEY
 
     def getForm (self, formKey):
+        #TODO implement exception for no network etc.
         apiAddress = "https://api.typeform.com/v0/form/%s?key=%s" % formKey, self.API_KEY
         formJson = requests.get(apiAddress).json()
         return form(formJson)

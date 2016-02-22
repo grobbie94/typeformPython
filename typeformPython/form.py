@@ -24,5 +24,12 @@ class form:
                 answerDict[response['token']] = response['answers']
         return answerDict
 
-    def getAverageRating(self, questionNumber):
-        pass
+    def getAverageRating(self, questionToken):
+        #TODO throw exception if not a rating question
+        answers = self.getAllCompletedAnswers()
+        total = 0.0
+        count = 0
+        for response in answers:
+            total += int(answers[response][questionToken])
+            count += 1
+        return total/count
