@@ -14,3 +14,9 @@ class testForm(unittest.TestCase):
         questions = self.testForm.getQuestions()
         self.assertEqual(questions["list_17638595_choice"],
                         "Please select the coordinators for your class:")
+
+    def test_get_answers(self):
+        answers = self.testForm.getAllCompletedAnswers()
+        exampleToken = 'b06f6ae3622afa38822ceb31c3286b14'
+        self.assertTrue(exampleToken in answers)
+        self.assertEqual(answers[exampleToken]["list_17638595_choice"], 'Rob and Anin')

@@ -11,7 +11,7 @@ class form:
         return questionDict
 
     def getAllCompletedAnswers(self):
-        return getCompletedAnswersBefore(datetime.now())
+        return self.getCompletedAnswersBefore(datetime.now())
 
     #untilTime must be a dateTime Object
 
@@ -19,9 +19,9 @@ class form:
         answerDict = {}
         responses = self.json['responses']
         for response in responses:
-            responseTime = datetime.strptime(response['date_submit'], "%Y-%m-%d %H:%M:%S")
+            responseTime = datetime.strptime(response['metadata']['date_submit'], "%Y-%m-%d %H:%M:%S")
             if response['completed'] == "1" and responseTime < untilTime:
-                answerDict[response['token']] = responses['answers'].values()
+                answerDict[response['token']] = response['answers']
         return answerDict
 
     def getAverageRating(self, questionNumber):
