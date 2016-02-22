@@ -1,3 +1,6 @@
+from setuptools import setup
+
+
 setup(name='typeformPython',
       version='0.1',
       description='A Python Wrapper for the Typeform API',

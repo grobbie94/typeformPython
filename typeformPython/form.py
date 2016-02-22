@@ -5,7 +5,7 @@ class form:
 
     def getQuestions(self):
         questionDict = {}
-        questions = json['questions']
+        questions = self.json['questions']
         for question in questions:
             questionDict[question['id']] = question['question']
         return questionDict
