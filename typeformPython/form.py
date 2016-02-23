@@ -25,8 +25,6 @@ class form:
         """
         return self.getCompletedResponsesBefore(datetime.now())
 
-    #untilTime must be a dateTime Object
-
     def getCompletedResponsesBefore(self, untilTime):
         """
         Returns responses before untilTime in form:
