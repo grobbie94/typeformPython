@@ -10,12 +10,12 @@ class form:
             questionDict[question['id']] = question['question']
         return questionDict
 
-    def getAllCompletedAnswers(self):
-        return self.getCompletedAnswersBefore(datetime.now())
+    def getAllCompletedResponses(self):
+        return self.getCompletedResponsesBefore(datetime.now())
 
     #untilTime must be a dateTime Object
 
-    def getCompletedAnswersBefore(self, untilTime):
+    def getCompletedResponsesBefore(self, untilTime):
         answerDict = {}
         responses = self.json['responses']
         for response in responses:
@@ -26,10 +26,19 @@ class form:
 
     def getAverageRating(self, questionToken):
         #TODO throw exception if not a rating question
-        answers = self.getAllCompletedAnswers()
+        answers = self.getAnswersByQuestion(questionToken)
         total = 0.0
         count = 0
         for response in answers:
-            total += int(answers[response][questionToken])
+            total += int(response)
             count += 1
         return total/count
+
+    def getAnswersByQuestion (self, questionToken):
+        #Responses is a dict of form
+        #{responseToken: {questionToken: answer, questionToken: answer ...}}
+        answers = []
+        responses = self.getAllCompletedResponses()
+        for response in responses:
+            answers.append(responses[response][questionToken])
+        return answers
