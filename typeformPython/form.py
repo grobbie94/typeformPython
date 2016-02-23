@@ -35,10 +35,13 @@ class form:
         return total/count
 
     def getAnswersByQuestion (self, questionToken):
+        return self.getAnswersByQuestionBefore(questionToken, datetime.now())
+
+    def getAnswersByQuestionBefore (self, questionToken, untilTime):
         #Responses is a dict of form
         #{responseToken: {questionToken: answer, questionToken: answer ...}}
         answers = []
-        responses = self.getAllCompletedResponses()
+        responses = self.getCompletedResponsesBefore(untilTime)
         for response in responses:
             answers.append(responses[response][questionToken])
         return answers
