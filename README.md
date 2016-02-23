@@ -22,13 +22,13 @@ exampleForm = tf.getForm(formKey)
 Returns a dictionary of the form {questionToken: Question Text}
 
 <b>Retrieving responses from a form object</b>
-<pre><code>responseDict = exampleFrom.getAllCompletedResponses()
+<pre><code>responseDict = exampleForm.getAllCompletedResponses()
 </pre></code>
 
 Returns all responses in form: {responseToken: {questionToken: answerString....}}
 
 <b> Get average rating of a rating or opinion question</b>
-<pre><code>rating = exampleFrom.getAverageRating(questionToken)
+<pre><code>rating = exampleForm.getAverageRating(questionToken)
 </pre></code>
 
 
