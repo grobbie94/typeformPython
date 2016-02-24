@@ -8,7 +8,7 @@ class testForm(unittest.TestCase):
         with open("./tests/json.txt") as f:
             exampleJsonRaw = f.read()
         exampleJson = ast.literal_eval(exampleJsonRaw)
-        self.testForm = form.form(exampleJson)
+        self.testForm = form(exampleJson)
 
 
     def test_get_questions(self):
