@@ -12,7 +12,7 @@ In the base directory run:
 #Usage
 <b>Instantiating a form object</b>
 <pre><code>from typeformPython import typeform
-tf = typeform.typeform(API_KEY)
+tf = typeform(API_KEY)
 exampleForm = tf.getForm(formKey)
 </pre></code>
 
